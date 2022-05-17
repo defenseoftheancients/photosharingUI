@@ -1,0 +1,170 @@
+@import "./variable";
+@import "./mixin";
+header {
+    top: 0;
+    z-index: 999;
+    background: $white;
+    &.active {
+        position: sticky;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 6px 0px, rgba(0, 0, 0, 0.02) 0px 0px 2px 0px;
+    }
+}
+.header-area {
+    padding: 22px 0;
+}
+
+.logo {
+    a {
+        @include hovereffect($theme-color-300);
+    }
+}
+
+.header-notification {
+    .notification-active {
+        position: relative;
+        color: unset;
+        ion-icon {
+            font-size: 22px;
+            transition: color 0.3s;
+            &:hover {
+                color: $theme-color-300;
+            }
+        }  
+        span {
+            position: absolute;
+            top: -2px;
+            left: 53%;
+            border-radius: 50%;
+            display: inline-block;
+            
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            font-size: 13px;
+            background-color: $rederror;
+            color: white;
+        }
+    } 
+    .notification-dropdown {
+        position: absolute;
+       
+        box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
+        transform: translate3d(-107px, 89px, 0px) !important;
+        max-width: 400px;
+        max-height: 400px;
+        overflow: hidden;
+        overflow-y: auto;
+    }   
+    .notifications {
+        display: flex;
+        flex-flow: nowrap column;
+        padding: 0 5px;
+    }
+    .notification {
+        display: flex;
+        flex-flow: nowrap row;
+       
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 8px ;
+        &:hover {
+            background-color: #F2F2F2;
+        }
+    }
+    .notification-left {
+        
+        margin-right: 5px;
+        img {
+            width: 50px;
+        height: 50px;
+            border-radius: 50px;
+        }
+    }
+    .notification-right {
+        .notification-content {
+            font-size: 14px;
+        }
+    }
+    .notification-time {
+        font-size: 12px;
+        font-style: italic;
+        margin-top: 4px;
+    }
+}
+.header-account {
+    .account-active {
+        color: unset;
+        ion-icon {
+            font-size: 25px;
+            transition: color 0.3s;
+            &:hover {
+                color: $theme-color-300;
+            }
+        }  
+    } 
+    .account-dropdown {
+       
+        transform: translate3d(0px, 67px, 0px) !important;
+       
+    }  
+    .account-dropdowncontent {
+        box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
+        padding: 5px 15px;
+       
+        li {
+            margin: 12px 0;
+            a {
+              
+                display: block;
+                font-size: 14px;
+                @include hovereffect($theme-color-300);
+                &:hover {
+                    transform: translateX(5px);
+                   
+                }
+            }
+        }
+    }   
+}
+.header-search {
+    .search-active {
+
+        color: unset;
+        ion-icon {
+            font-size: 22px;
+            @include hovereffect($theme-color-300);
+        }  
+    }
+    .search-content {
+        transform: translate3d(-61px, 89px, 0px) !important;
+        background-color: $bg-white;
+        padding: 15px;
+        box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
+        border-radius: 0;
+        .input-search {
+            border: 1px solid #d3d3d3;
+            border-radius: 0;
+            &::placeholder {
+                font-size: 14px;
+            }
+        }
+        .button-search {
+            border-radius: 0;
+            border: none;
+            background-color: $theme-color-500;
+            
+            ion-icon {
+                line-height: 60px;
+                font-size: 20px;
+                @include hovereffect($theme-color-300);
+            }
+            padding: 12px 20px;
+        }
+    }
+}
+
+
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+}

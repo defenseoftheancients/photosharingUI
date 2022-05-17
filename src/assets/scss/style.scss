@@ -1,0 +1,20 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import url("https://unpkg.com/tagin@2.0.2/dist/tagin.min.css");
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import "./base";
+@import "./variable";
+@import "./header";
+@import "./slide";
+@import "./photo";
+@import "./profile";
+@import "./login";
+@import "./registry";
+@import "./upload";
+@import "./modal";
+@import "./loader";
+body {
+    position: relative;
+    font-family: $poppins;
+}

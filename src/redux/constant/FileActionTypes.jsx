@@ -1,0 +1,6 @@
+export const FileActionTypes =  {
+    SET_FILE: "SET_FILE",
+    REMOVE_SELECTED_FILE: "REMOVE_SELECTED_FILE",
+    REMOVE_ALL_FILES: "REMOVE_ALL_FILES"
+};
+  

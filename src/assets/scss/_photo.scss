@@ -1,0 +1,529 @@
+@import "./variable";
+@import "./mixin";
+
+.tabphoto {
+  text-align: center;
+  margin-top: 50px;
+
+  &-heading {
+    font-family: $cormorantgaramond;
+    position: relative;
+    font-size: 35px;
+    font-weight: bold;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-bottom: 40px;
+
+    @media #{$md-layout} {
+      & {
+        font-size: 20px;
+       
+      }
+      &::before { 
+        left: -50px;
+      }
+      &:after {
+        right: -50px;
+      }
+    }
+    @media #{$sm-layout} {
+      & {
+        font-size: 20px;
+      }
+      &::before { 
+        display: none;
+      }
+      &:after {
+        display: none;
+      }
+    }
+    @media #{$xs-layout} {
+      & {
+        font-size: 20px;
+      }
+      &::before { 
+        display: none;
+      }
+      &:after {
+        display: none;
+      }
+    }
+    &::before {
+      content: "";
+      height: 1px;
+      width: 80px;
+      background-color: $black;
+      position: absolute;
+      left: -150px;
+      top: 50%;
+    }
+    &::after {
+      content: "";
+      height: 1px;
+      width: 80px;
+      background-color: $black;
+      position: absolute;
+      right: -150px;
+      top: 50%;
+    }
+  }
+  > ul {
+    text-align: center;
+    .nav-link {
+      border: none;
+      color: #555;
+      font-size: 18px;
+      cursor: pointer;
+      &.active {
+        color: $theme-color-400;
+      }
+    }
+  }
+}
+.galleryblock {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 0.81fr 1fr 0.81fr 1fr;
+
+  grid-template-areas:
+    "img1  img2  img3 img4   img5"
+    "img1  img7  img3 img9   img5"
+    "img6  img7  img8 img9   img10"
+    "img6  img12 img8 img14  img10 "
+    "img11 img12 img13 img14 img15";
+
+  grid-gap: 0.5em;
+}
+.flexbin {
+  display: flex;
+  overflow: hidden;
+  flex-wrap: wrap;
+  
+  // padding-bottom: 200px;
+}
+.flexbin:after {
+  content: "";
+  flex-grow: 999999999;
+  min-width: 300px;
+  height: 0;
+}
+.flexbin > * {
+  position: relative;
+  display: block;
+  height: 300px;
+  margin: 2.5px;
+  flex-grow: 1;
+}
+.flexbin > * > img {
+  height: 300px;
+  object-fit: cover;
+  max-width: 100%;
+  min-width: 100%;
+  vertical-align: bottom;
+}
+.flexbin.flexbin-margin {
+  margin: 2.5px;
+}
+@media  #{$sm-layout}, #{$md-layout} {
+  .flexbin {
+    display: flex;
+    overflow: hidden;
+    flex-wrap: wrap;
+    margin: -2.5px;
+  }
+  .flexbin:after {
+    content: "";
+    flex-grow: 999999999;
+    min-width: 150px;
+    height: 0;
+  }
+  .flexbin > * {
+    position: relative;
+    display: block;
+    height: fit-content;
+    margin: 2.5px;
+    flex-grow: 1;
+  }
+  .flexbin > * > img {
+    height: fit-content;
+    object-fit: cover;
+    max-width: 100%;
+    min-width: 100%;
+    vertical-align: bottom;
+  }
+  .flexbin.flexbin-margin {
+    margin: 2.5px;
+  }
+}
+@media #{$sm-layout}, #{$xs-layout} {
+  .flexbin {
+    display: flex;
+    overflow: hidden;
+    flex-wrap: wrap;
+    margin: -2.5px;
+  }
+  .flexbin:after {
+    content: "";
+    flex-grow: 999999999;
+    min-width: 100px;
+    height: 0;
+  }
+  .flexbin > * {
+    position: relative;
+    display: block;
+    height: fit-content;
+    margin: 2.5px;
+    flex-grow: 1;
+  }
+  .flexbin > * > img {
+    height: fit-content;
+    object-fit: cover;
+    max-width: 100%;
+    min-width: 100%;
+    vertical-align: bottom;
+  }
+  .flexbin.flexbin-margin {
+    margin: 2.5px;
+  }
+}
+.photogrid-image {
+  cursor: pointer;
+  position: relative;
+ 
+  &:hover {
+    .overlay {
+      opacity: 1;
+    }
+  }
+}
+.overlay {
+  display: block;
+  transition: all 0.5s;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba($color: #000000, $alpha: 0.11);
+  a {
+    color: rgb(232, 232, 232);
+    &:hover {
+      color: $white;
+    }
+  }
+}
+.overlay-content {
+  width: 100%;
+  position: absolute;
+  padding: 0 5px 5px 5px;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    color: $white;
+    font-size: 14px;
+  }
+
+  ion-icon {
+    z-index: 99;
+    font-size: 25px;
+    transition: color 0.3s;
+   
+    color: rgb(232, 232, 232);
+    &:hover {
+      color: $white;
+    }
+    &:nth-of-type(1) {
+      position: relative;
+      top: -2px;
+    }
+    &:nth-of-type(2) {
+      margin-left: 10px;
+    }
+    &[name="heart"] {
+      color: #ff5252;
+    }
+  }
+}
+.photogrid-row {
+  max-width: 1400px;
+  margin: 50px auto 0 auto;
+  display: flex;
+  flex-flow: wrap row;
+
+  [class^="photogrid-col"] {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+
+    img {
+      vertical-align: middle;
+      height: unset;
+    }
+    @media screen and (max-width: 800px) {
+      & {
+        flex: 50%;
+        max-width: 50%;
+      }
+    }
+
+    /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+      & {
+        flex: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+}
+.fade-in-image {
+  animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.photo-detail {
+  background-color: #212124;
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  img {
+ 
+    width: auto;
+    height: 500px;
+  }
+}
+.photo-infor {
+  background-color: #f7f8fa;
+  padding: 10px 0;
+  .photo-infor-left {
+    background-color: $white;
+    min-height: 500px;
+    padding: 15px;
+    .photo-reaction {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      ion-icon {
+        font-size: 30px;
+        cursor: pointer;
+        border-radius: 50%;
+        padding: 5px;
+        margin-right: 10px;
+        &:hover {
+          background: rgba(34, 34, 34, 0.1);
+        }
+        &:active {
+          background: rgba(34, 34, 34, 0.2);
+        }
+        &:nth-of-type(2) {
+          margin-top: -2px;
+        }
+      }
+      .photo-totallike {
+        display: flex;
+        align-items: center;
+        ion-icon[name="heart"] {
+          color: #ff5252;
+        }
+      }
+    }
+
+    .photo-shortdescription {
+      display: flex;
+      align-items: center;
+    }
+    .photo-avatar {
+      margin-right: 15px;
+      margin-top: 15px;
+      width: 60px;
+      height: 60px;
+      flex-shrink: 0;
+      img {
+        border-radius: 50%;
+      }
+    }
+    .photo-titleandusername {
+      h2 {
+        font-size: 25px;
+        font-weight: 500;
+        margin-bottom: -5px;
+      }
+      > div {
+        display: flex;
+        align-items: center;
+      }
+      p {
+        margin-right: 10px;
+      }
+      button {
+        margin-bottom: -2px;
+        background: none;
+        border: none;
+        color: $theme-color-200;
+      }
+    }
+    .photo-uploadtime {
+      margin-top: 15px;
+      span {
+        font-weight: 500;
+      }
+    }
+    .photo-device {
+      margin-top: 12px;
+      span {
+        font-weight: 500;
+      }
+    }
+    .photo-description {
+      margin-top: 12px;
+      line-height: 1.5;
+      span {
+        font-weight: 500;
+      }
+    }
+    .photo-tagbox {
+      .photo-taghead {
+        font-weight: 500;
+        margin: 10px 0;
+      }
+      .photo-tags {
+        display: flex;
+        flex-flow: wrap row;
+        justify-content: start;
+        align-items: center;
+        span {
+          color: $black;
+          display: inline-block;
+          margin-right: 5px;
+          margin-bottom: 8px;
+          padding: 5px 10px;
+          border-radius: 5px;
+          border: 1px solid $black;
+          cursor: pointer;
+          transition: all 0.3s;
+          &:hover {
+            color: $theme-color-200;
+            border: 1px solid $theme-color-200;
+          }
+        }
+      }
+    }
+  }
+  .photo-infor-right {
+    background-color: $white;
+    height: 700px;
+    padding: 15px;
+    form {
+      label {
+        font-weight: 500;
+        font-size: 17px;
+      }
+      textarea {
+        resize: none !important;
+      }
+      button {
+        display: block;
+        width: fit-content;
+        margin-top: 15px;
+        margin-left: auto;
+        background-color: $theme-color-500;
+        transition: all 0.5s;
+        &:hover {
+          background-color: $theme-color-700;
+        }
+
+        border: none;
+      }
+    }
+    .photo-commenttotal {
+      font-weight: 500;
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+    .photo-comments {
+      display: flex;
+      flex-flow: column nowrap;
+    }
+    .photo-comment {
+      display: flex;
+      flex-flow: nowrap column;
+      margin: 5px 0;
+      .comment-top {
+        display: flex;
+        justify-content: space-between;
+      }
+      .photo-commentleft {
+        display: flex;
+        align-items: center;
+        .photo-commmentavatar {
+          margin-right: 10px;
+          flex-shrink: 0;
+          width: 40px;
+          height: 40px;
+          img {
+            border-radius: 50%;
+          }
+        }
+        .photo-commmentusernameandcontent {
+          a {
+            font-weight: 500;
+          }
+          p {
+            margin-top: 3px;
+            font-size: 13px;
+            font-style: italic;
+          }
+        }
+      }
+      .photo-commentright {
+        ion-icon {
+          cursor: pointer;
+        }
+      }
+      .photo-commentbottom {
+        margin-top: 2px;
+        padding-left: 50px;
+        p {
+          font-size: 14px;
+          line-height: 1.2;
+        }
+      }
+    }
+  }
+  div[class*="col"] {
+    padding: 0;
+    &:nth-of-type(1) {
+      padding: 0px 5px 0px 10px;
+    }
+    &:nth-of-type(2) {
+      padding: 0px 10px 0px 5px;
+    }
+    @media #{$sm-layout} {
+      &:nth-of-type(1),
+      &:nth-of-type(2) {
+        margin-bottom: 5px;
+        padding: 0px 5px;
+      }
+    }
+    @media #{$xs-layout} {
+      &:nth-of-type(1),
+      &:nth-of-type(2) {
+        margin-bottom: 5px;
+        padding: 0px 5px;
+      }
+    }
+  }
+}
+

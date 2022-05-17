@@ -1,0 +1,183 @@
+@import "./variable";
+.upload-file {
+  height: 350px;
+  width: 430px;
+  position: absolute;
+  top: 200%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin: 0 auto;
+}
+.upload-file .wrapper {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  border-radius: 10px;
+  background: #fff;
+  border: 2px dashed #c2cdda;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.wrapper {
+  position: relative;
+  height: 300px;
+  width: 100%;
+  border-radius: 10px;
+  background: #fff;
+  border: 2px dashed #c2cdda;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.wrapper .image-box {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper.active {
+  border: 2px solid #3a8ffe;
+}
+.wrapper img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: 99;
+}
+.wrapper .icon {
+  text-align: center;
+  font-size: 100px;
+  color: #9658fe;
+}
+.wrapper .text {
+  font-size: 20px;
+  font-weight: 500;
+  color: #5b5b7b;
+}
+.file-frame .cancel-btn ion-icon {
+  position: absolute;
+  font-size: 25px;
+  font-weight: bold;
+  right: 15px;
+  top: 15px;
+  color: $white;
+  cursor: pointer;
+  display: none;
+  z-index: 99;
+}
+.file-frame:hover .cancel-btn ion-icon {
+  display: block;
+}
+.file-frame:target .cancel-btn ion-icon {
+  display: block;
+}
+.cancel-btn ion-icon:hover {
+  color: #e74c3c;
+}
+.wrapper .file-name {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding: 8px 0;
+  font-size: 18px;
+  color: #fff;
+  display: none;
+  background: linear-gradient(135deg, #3a8ffe 0%, #9658fe 100%);
+}
+.wrapper.active:hover .file-name {
+  display: block;
+}
+
+.upload-file #custom-btn {
+  margin-top: 30px;
+  display: block;
+  width: 100%;
+  height: 50px;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: linear-gradient(135deg, #3a8ffe 0%, #9658fe 100%);
+}
+
+.upload-form {
+  display: flex;
+  background: $bg-white-bold;
+
+}
+.file-display {
+  border-top: 1px solid #eeeff2;
+
+  flex-basis: 70%;
+  height: calc(100vh - 88px);
+  overflow-y: scroll;
+  .file-frame {
+    position: relative;
+    width: auto;
+    height: 200px;
+    object-fit: contain;
+    margin-top: 8px;
+    padding: 0 4px;
+  }
+  &.active {
+    border-top: 1px solid #3a8ffe;
+    border-right: 1px solid #3a8ffe;
+  }
+}
+
+.file-box {
+  display: flex;
+  flex-flow: wrap row;
+}
+.file-infor {
+  position: relative;
+  flex-basis: 30%;
+  height: calc(100vh - 88px);
+  border-top: 1px solid #eeeff2;
+  border-left: 1px solid #eeeff2;
+  background: $white;
+  .file-count {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $white;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+  .file-submit {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $white;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.02), 0 -2px 6px rgba(0, 0, 0, 0.08);
+  }
+  form {
+    padding: 60px 15px 50px 15px;
+    overflow-y: scroll;
+  }
+  textarea {
+    resize: none;
+  }
+}
+.tagin-tag {
+  padding: 8px;
+}
+

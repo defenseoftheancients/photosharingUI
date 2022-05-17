@@ -1,17 +1,37 @@
 {
+  "homepage": "https://defenseoftheancients.github.io/photosharingUI",
   "name": "xuanboots",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.26.1",
+    "bootstrap": "^5.1.3",
+    "clsx": "^1.1.1",
+    "lightense-images": "^1.0.17",
+    "medium-zoom": "^1.0.6",
+    "net": "^1.0.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-helmet": "^6.1.0",
+    "react-redux": "^7.2.8",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "reactstrap": "^9.0.2",
+    "redux": "^4.1.2",
+    "sass": "^1.50.0",
+    "sockjs-client": "^1.6.0",
+    "stompjs": "^2.3.3",
+    "swiper": "^8.1.1",
+    "tagin": "^2.0.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -34,5 +54,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
