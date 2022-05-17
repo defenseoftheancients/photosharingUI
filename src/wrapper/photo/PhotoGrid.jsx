@@ -1,3 +1,4 @@
+
 import React, { Fragment, useEffect, useLayoutEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Container } from "reactstrap";
@@ -8,9 +9,10 @@ const PhotoGrid = ({ url, sortParam, isAuth }) => {
     const currentUser = useSelector((state) => state.User);
     const [photos, setPhotos] = useState([]);
     const [page, setPage] = useState(1);
-
+    const [isLoading, setLoading] = useState(false);
     const fetchPhotos = async () => {
         if (isAuth && currentUser.isAuthUser) {
+            setLoading(true);
             let data = null;
             if(url.includes("like")) 
                 data = await PhotoService.getlikedPhotosOfUser(url, currentUser.user, page);
@@ -23,8 +25,10 @@ const PhotoGrid = ({ url, sortParam, isAuth }) => {
                     newPhotos.push(photo);
                 });
                 setPhotos(newPhotos);
+                setLoading(false);
             }
         } else if (!isAuth) {
+            setLoading(true);
             const data = await PhotoService.getPhotos(url, currentUser.user, page, sortParam);
             let newPhotos = [...photos];
             if (data.length > 0) {
@@ -32,6 +36,7 @@ const PhotoGrid = ({ url, sortParam, isAuth }) => {
                     newPhotos.push(photo);
                 });
                 setPhotos(newPhotos);
+                setLoading(false);
             }
         }
     };
@@ -42,7 +47,10 @@ const PhotoGrid = ({ url, sortParam, isAuth }) => {
         const wrappedElement = document.querySelector(".flexbin");
         if (wrappedElement.getBoundingClientRect().bottom <= window.innerHeight) {
             // console.log("header bottom reached");
-            setPage((state) => state + 1);
+            if(!isLoading) {
+                setPage((state) => state + 1);
+            }
+                
         }
     };
     useEffect(() => {
