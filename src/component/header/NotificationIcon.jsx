@@ -21,13 +21,16 @@ const NotificationIcon = () => {
                 notification,
                 SYSTEM_URL.NOTIFICATION_API_URL(currentUser.user.userDTO.id, notification.id)
             );
-            console.log(response);
+         
             if (response.status === 200) {
                 notificationDispatch(seenNotification(response.data));
                 window.location.href = notification.objecturl.substring(21);
             }
             else if(response.status === 404) 
                 navigate("/home")
+        }
+        else {
+            window.location.href = notification.objecturl.substring(21);
         }
     };
 
@@ -61,7 +64,7 @@ const NotificationIcon = () => {
                     <div className="notifications">
                         {notifications.length === 0 ? <p>Không có thông báo nào</p>  :  notifications.map((notification) => {
                             return (
-                                <div key={notification.id} className="notification" onClick={() => handleReadNotification(notification)}>
+                                <div key={new Date() + Math.random()} className="notification" onClick={() => handleReadNotification(notification)}>
                                     <div className="notification-left">
                                         <img src={require("../../assets/image/user1.jpg")} alt="" />
                                     </div>

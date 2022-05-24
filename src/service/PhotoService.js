@@ -47,7 +47,7 @@ class PhotoService {
     }
 
     async getlikedPhotosOfUser(url, currentUser, page) {
-        console.log(currentUser.accessToken);
+        // console.log(currentUser.accessToken);
         const response = await axios
             .get(url, {
                 params: { 

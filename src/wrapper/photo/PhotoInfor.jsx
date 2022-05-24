@@ -174,7 +174,7 @@ const PhotoInfor = ({ photoDetail }) => {
                                 </div>
                             </div>
                             <div className="photo-device">
-                                <span>Thiết bị:</span> Iphone XS
+                                <span>Thiết bị:</span> 
                             </div>
                             <div className="photo-device">
                                 <span>Độ phân giải:</span> {photoDetail.photo.resolution}
